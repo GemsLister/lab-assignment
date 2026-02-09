@@ -16,7 +16,7 @@
                         <h1 class="text-4xl font-bold mb-2">Welcome back, {{ auth()->user()->name }}! 🚗</h1>
                         <p class="text-red-100">Your premium car rental dashboard</p>
                     </div>
-                    <img src="{{ Vite:: asset('resources/assets/car.png') }}" alt="car" class="w-20 h-20 opacity-80 hidden sm:block">
+                    <img src="{{ Vite:: asset('resources/assets/car.png') }}" alt="car" class="w-80 opacity-80 hidden sm:block">
                 </div>
             </div>
 

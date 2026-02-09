@@ -6,8 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
-                        <img src="{{ Vite:: asset('resources/assets/car.png') }}" alt="car-logo" class="w-10 h-10">
-                        <span class="text-white font-bold text-xl hidden sm:inline">DriveHub</span>
+                        <img src="{{ Vite:: asset('resources/assets/car.png') }}" alt="car-logo" class="w-[100px]">
                     </a>
                 </div>
 
@@ -16,10 +15,10 @@
                     <a href="{{ route('dashboard') }}" class="text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->routeIs('dashboard') ? 'bg-red-500' : '' }}">
                         <i class="fas fa-home mr-2"></i>Dashboard
                     </a>
-                    <a href="#" class="text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <a href="{{ route('cars.browse') }}" class="text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->routeIs('cars.browse') ? 'bg-red-500' : '' }}">
                         <i class="fas fa-car mr-2"></i>Browse Cars
                     </a>
-                    <a href="#" class="text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                    <a href="{{ route('bookings.index') }}" class="text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->routeIs('bookings.index') ? 'bg-red-500' : '' }}">
                         <i class="fas fa-calendar mr-2"></i>My Bookings
                     </a>
                 </div>
@@ -77,10 +76,10 @@
             <a href="{{ route('dashboard') }}" class="block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('dashboard') ? 'bg-red-500' : '' }}">
                 <i class="fas fa-home mr-2"></i>Dashboard
             </a>
-            <a href="#" class="block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium">
+            <a href="{{ route('cars.browse') }}" class="block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('cars.browse') ? 'bg-red-500' : '' }}">
                 <i class="fas fa-car mr-2"></i>Browse Cars
             </a>
-            <a href="#" class="block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium">
+            <a href="{{ route('bookings.index') }}" class="block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('bookings.index') ? 'bg-red-500' : '' }}">
                 <i class="fas fa-calendar mr-2"></i>My Bookings
             </a>
         </div>

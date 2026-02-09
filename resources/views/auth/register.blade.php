@@ -47,7 +47,10 @@
         @csrf
 
         <div class="flex flex-col gap-4">
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-error :messages="$errors->get('username')" class="mt-2" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
             @foreach ($fields as $field)
                 <x-form-field :label="$field['label']" :id="$field['id']" :type="$field['type']" :name="$field['name']"
                     :autocomplete="$field['autocomplete']" />
