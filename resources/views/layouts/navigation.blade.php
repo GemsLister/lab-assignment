@@ -1,20 +1,27 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-gradient-to-r from-red-600 to-red-700 border-b border-red-800 shadow-lg">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
+        <div class="flex justify-between h-20">
+            <div class="flex items-center">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="{{ Vite:: asset('resources/assets/car.png') }}" alt="car-logo" class="w-[100px]">
+                    <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
+                        <img src="{{ Vite:: asset('resources/assets/car.png') }}" alt="car-logo" class="w-10 h-10">
+                        <span class="text-white font-bold text-xl hidden sm:inline">DriveHub</span>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                <div class="hidden space-x-2 sm:-my-px sm:ms-10 sm:flex">
+                    <a href="{{ route('dashboard') }}" class="text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors {{ request()->routeIs('dashboard') ? 'bg-red-500' : '' }}">
+                        <i class="fas fa-home mr-2"></i>Dashboard
+                    </a>
+                    <a href="#" class="text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-car mr-2"></i>Browse Cars
+                    </a>
+                    <a href="#" class="text-white hover:bg-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-calendar mr-2"></i>My Bookings
+                    </a>
                 </div>
             </div>
 
@@ -22,8 +29,8 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                        <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-500 hover:bg-red-400 focus:outline-none transition ease-in-out duration-150">
+                            <div><i class="fas fa-user mr-2"></i>{{ Auth::user()->name }}</div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -35,7 +42,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            <i class="fas fa-cog mr-2"></i>{{ __('Profile Settings') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -45,7 +52,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                <i class="fas fa-sign-out-alt mr-2"></i>{{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -65,34 +72,37 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden bg-red-700">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            <a href="{{ route('dashboard') }}" class="block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium {{ request()->routeIs('dashboard') ? 'bg-red-500' : '' }}">
+                <i class="fas fa-home mr-2"></i>Dashboard
+            </a>
+            <a href="#" class="block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium">
+                <i class="fas fa-car mr-2"></i>Browse Cars
+            </a>
+            <a href="#" class="block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium">
+                <i class="fas fa-calendar mr-2"></i>My Bookings
+            </a>
         </div>
 
         <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="pt-4 pb-1 border-t border-red-600">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="font-medium text-base text-white"><i class="fas fa-user-circle mr-2"></i>{{ Auth::user()->name }}</div>
+                <div class="font-medium text-sm text-red-200">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-responsive-nav-link>
+                <a href="{{ route('profile.edit') }}" class="block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium">
+                    <i class="fas fa-cog mr-2"></i>Profile Settings
+                </a>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
-                    <x-responsive-nav-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
+                    <button type="submit" onclick="event.preventDefault(); this.closest('form').submit();" class="w-full text-left block text-white hover:bg-red-500 px-3 py-2 rounded-md text-base font-medium">
+                        <i class="fas fa-sign-out-alt mr-2"></i>{{ __('Log Out') }}
+                    </button>
                 </form>
             </div>
         </div>
