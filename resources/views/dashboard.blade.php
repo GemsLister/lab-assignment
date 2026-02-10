@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            <h2 class="font-semibold text-xl text-rich-navy-blue leading-tight">
                 <i class="fas fa-tachometer-alt mr-2"></i>{{ __('Dashboard') }}
             </h2>
         </div>
@@ -160,7 +160,7 @@
                             </div>
                             <div class="border-b pb-4">
                                 <p class="text-gray-600 dark:text-gray-400 text-sm">USERNAME</p>
-                                <p class="font-bold text-gray-900 dark:text-white">@{{ auth()->user()->username }}</p>
+                                <p class="font-bold text-gray-900 dark:text-white">{{ auth()->user()->username }}</p>
                             </div>
                             <div class="border-b pb-4">
                                 <p class="text-gray-600 dark:text-gray-400 text-sm">EMAIL</p>
